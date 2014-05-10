@@ -1,0 +1,32 @@
+Support Platforms
+	Windows 7 or later.
+
+Version 1.1
+    Modified the method of adding start automactically registry key into regedit.
+    Modified the root method of start screen saver.
+	Modified the working time and rest time when they are equal 0.
+    Fixed the problem of the large number of working time or rest time.
+
+Version 1.2
+    Add a option whether this program will minimize when ran.
+    Add a option to alert when there is 10 seconds left.
+	Create window for screen saver.
+	Add two options to escape screen saver, that is pressing ESC key or CTRL+Q.
+	Fix ALT+F4 problem, just closing the screen saver when this combination key has been invoked.
+	Add global hot key CTRL+ALT+SHIFT+S for starting screen saver manually.
+
+Version 1.2.1
+    Add global hot key CTRL+ALT+SHIFT+W for showing or hiding main window.
+	Unify the two behaviors of minimize button and combination key CTRL+ALT+SHIFT+W(minimize).
+	Modified the behavior of  the global hot key of screen saver, so the screen saver can be opened or closed with the same combination key.
+	Adding horizontal scroll bar of listbox, in order to adapt the text width automatically.
+    Swap the position between close button and local time on screen saver.
+	Read configuration from file.
+    Save properties to configuration file.
+    Hide cursor when traps into screen saver.
+
+Version 1.2.2
+    Check if the app has been run.
+    Improve the behavior of reading data from file.
+    Display remaining time in rest status.
+    Only one instance can be run at the same.
