@@ -1,6 +1,6 @@
 ================================================================================
-    MICROSOFT FOUNDATION CLASS LIBRARY : HaveARest Project Overview
-===============================================================================
+                            HaveARest Project Overview
+================================================================================
 
 The application wizard has created this HaveARest application for
 you.  This application not only demonstrates the basics of using the Microsoft
