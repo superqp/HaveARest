@@ -138,7 +138,7 @@ void CHaveARestApp::set()
         props.prop[START_AND_MINIMIZE_MAIN_WINDOW_NUMBER].prop_value = false;
 }
 
-//When start button is pressed, this function will invoked. This function will start 
+//When start button is pressed, this function will be invoked. This function will start 
 // startTimer() -> MARSHAL_TIMER -> WORKING_TIMER(temporary, killed by itself) -> REST_TIMER(killed by itself)
 bool CHaveARestApp::startTimer()
 {

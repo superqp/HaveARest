@@ -148,7 +148,7 @@ void CScreen::end()
     ::SetForegroundWindow(m_lastWindowhWnd);
     ::SetActiveWindow(m_lastWindowhWnd);
     ::SetFocus(m_lastWindowhWnd);
-    ::AnimateWindow(m_hWnd, ONE_SECOND, AW_BLEND|AW_HIDE);   //::ShowWindow(m_hWnd, SW_HIDE);
+    ::ShowWindow(m_hWnd, SW_HIDE);   //::AnimateWindow(m_hWnd, ONE_SECOND, AW_BLEND|AW_HIDE);
     m_screenStarted = false;
 }
 

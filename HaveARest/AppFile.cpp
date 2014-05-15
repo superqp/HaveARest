@@ -48,10 +48,10 @@ bool CAppFile::isConfFileExist()
  //   conf_file.close();
 
 	// method 2
-	if ( 0 == _waccess( (getConfPathName()).GetString(), 0 ) )
-	{
-		exist = true;
-	}
+    if ( 0 == _waccess( (getConfPathName()).GetString(), 0 ) )
+    {
+        exist = true;
+    }
     return exist;
 }
 
