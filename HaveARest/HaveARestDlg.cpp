@@ -300,7 +300,6 @@ void CHaveARestDlg::OnBnClickedStop()
     haveARest.showMessage(L"Have A Rest has been stopped.");
 }
 
-
 void CHaveARestDlg::OnBnClickedCancel()
 {
     // TODO: Add your control notification handler code here
