@@ -127,7 +127,7 @@ void CScreen::start(const unsigned int duration_time)
 
     ChangeRGBValue(RGB_R, RGB_G, RGB_B, OPERATE_FLAG);
     m_dc.SetTextColor(RGB_MUTABLE);
-    showScreenSaverWindow();
+    startScreenSaverWindow();
 
     if ( 0 == duration_time )
         return;
@@ -142,14 +142,36 @@ void CScreen::start(const unsigned int duration_time)
     m_dc.TextOut(m_point_text.x, m_point_text.y, str_format_time);
 }
 
-void CScreen::end()
+void CScreen::startScreenSaverWindow()
 {
-    //::SetWindowPos(m_hWnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE|SWP_NOSIZE|SWP_NOACTIVATE);
-    ::SetForegroundWindow(m_lastWindowhWnd);
-    ::SetActiveWindow(m_lastWindowhWnd);
-    ::SetFocus(m_lastWindowhWnd);
-    ::ShowWindow(m_hWnd, SW_HIDE);   //::AnimateWindow(m_hWnd, ONE_SECOND, AW_BLEND|AW_HIDE);
-    m_screenStarted = false;
+    GetLocalTime(&m_local_time);
+
+    if ( false == m_screenStarted )
+    {
+        m_lastWindowhWnd = ::GetForegroundWindow();
+        ::AnimateWindow(m_hWnd, ONE_SECOND*5, AW_BLEND); //ShowWindow(m_hWnd, SW_SHOW);
+        m_quit_button.ShowWindow(SW_SHOW);
+        showStaticMessage();
+        showLocalTime();
+        ::UpdateWindow(m_hWnd);
+        m_screenStarted = true;
+    }
+
+    if ( 0 == m_local_time.wSecond )
+    {
+        showLocalTime();
+    }
+
+    // Hide mouse
+    if ( (0 == m_local_time.wSecond%10) && GetCursor() )
+    {
+        SetCursor(NULL);
+    }
+
+    ::SetWindowPos(m_hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE|SWP_NOSIZE);
+    ::SetForegroundWindow(m_hWnd);
+    ::SetActiveWindow(m_hWnd);
+    ::SetFocus(m_hWnd);
 }
 
 void CScreen::cease()
@@ -164,6 +186,16 @@ void CScreen::cease()
 
     ::DestroyWindow(m_hWnd);
     UnregisterClass(WINDOW_CLASS_NAME, m_hInstance);
+}
+
+void CScreen::end()
+{
+    //::SetWindowPos(m_hWnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE|SWP_NOSIZE|SWP_NOACTIVATE);
+    ::SetForegroundWindow(m_lastWindowhWnd);
+    ::SetActiveWindow(m_lastWindowhWnd);
+    ::SetFocus(m_lastWindowhWnd);
+    ::ShowWindow(m_hWnd, SW_HIDE);   //::AnimateWindow(m_hWnd, ONE_SECOND, AW_BLEND|AW_HIDE);
+    m_screenStarted = false;
 }
 
 void CScreen::showStaticMessage()
@@ -211,38 +243,6 @@ void CScreen::showLocalTime()
     rect_local_time.bottom = m_int_screen_y;
     m_dc.FillRect(rect_local_time, &m_brush_black);
     m_dc.TextOut(rect_local_time.left, rect_local_time.top, str_format_time);
-}
-
-void CScreen::showScreenSaverWindow()
-{
-    GetLocalTime(&m_local_time);
-
-    if ( false == m_screenStarted )
-    {
-        m_lastWindowhWnd = ::GetForegroundWindow();
-        ::AnimateWindow(m_hWnd, ONE_SECOND*5, AW_BLEND); //ShowWindow(m_hWnd, SW_SHOW);
-        m_quit_button.ShowWindow(SW_SHOW);
-        showStaticMessage();
-        showLocalTime();
-        ::UpdateWindow(m_hWnd);
-        m_screenStarted = true;
-    }
-
-    if ( 0 == m_local_time.wSecond )
-    {
-        showLocalTime();
-    }
-
-    // Hide mouse
-    if ( (0 == m_local_time.wSecond%10) && GetCursor() )
-    {
-        SetCursor(NULL);
-    }
-
-    ::SetWindowPos(m_hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE|SWP_NOSIZE);
-    ::SetForegroundWindow(m_hWnd);
-    ::SetActiveWindow(m_hWnd);
-    ::SetFocus(m_hWnd);
 }
 
 void CScreen::showDynamicMessage(CString &message)

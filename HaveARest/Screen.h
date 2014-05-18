@@ -38,7 +38,7 @@ public:
     bool getScreenStartedStatus() const { return m_screenStarted; }
     void showStaticMessage();
     void showLocalTime();
-    void showScreenSaverWindow();
+    void startScreenSaverWindow();
     void showDynamicMessage(CString &message);
     void showDynamicMessage(const CString &message, int position_x = 50, int position_y = 0);
     afx_msg void OnBnClickedQuit();
