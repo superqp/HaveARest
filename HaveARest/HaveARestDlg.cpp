@@ -304,7 +304,7 @@ void CHaveARestDlg::OnBnClickedStop()
 void CHaveARestDlg::OnBnClickedCancel()
 {
     // TODO: Add your control notification handler code here
-    if (haveARest.getStartStatus() &&  IDNO == MessageBox(L"EXIT?", L"Have A Rest", MB_YESNO|MB_ICONQUESTION) )
+    if (haveARest.getStartStatus() &&  IDCANCEL == MessageBox(L"EXIT?", L"Have A Rest", MB_OKCANCEL|MB_ICONQUESTION) )
         return;
 
     DeleteGlobalHotKey(this->m_hWnd);
