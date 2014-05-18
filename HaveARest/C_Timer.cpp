@@ -6,7 +6,7 @@
 
 int global_int_rest_time;
 
-// MarshalTimer -> WorkingTimer -> RestTimer(killed by MarshalTimer or itself) 
+// Invoking order: MarshalTimer -> WorkingTimer -> RestTimer(killed by MarshalTimer or itself) 
 VOID CALLBACK MarshalTimer ( HWND hwnd, UINT message, UINT iTimerID, DWORD dwTime)
 {
     unsigned int workingTime = (props.prop[WORKING_TIME_NUMBER].prop_value) *60* 1000;
@@ -15,6 +15,7 @@ VOID CALLBACK MarshalTimer ( HWND hwnd, UINT message, UINT iTimerID, DWORD dwTim
     SetTimer(hwnd, TALLY_WORKING_TIMER, ONE_SECOND, TallyWokingTimer);
 }
 
+// This timer starts when working time is over, and rest timer will be set.
 VOID CALLBACK WorkingTimer ( HWND hwnd, UINT message, UINT iTimerID, DWORD dwTime)
 {
     KillTimer(hwnd, WORKING_TIMER);
@@ -27,7 +28,7 @@ VOID CALLBACK WorkingTimer ( HWND hwnd, UINT message, UINT iTimerID, DWORD dwTim
 VOID CALLBACK RestTimer( HWND hwnd, UINT message, UINT iTimerID, DWORD dwTime)
 {
     if ( 0 < global_int_rest_time )
-    {   
+    {
         screen.start(global_int_rest_time);
     }
     else
@@ -55,6 +56,7 @@ VOID CALLBACK TallyRestTimer ( HWND hwnd, UINT message, UINT iTimerID, DWORD dwT
     }
 }
 
+// This timer starts when user start screen saver purposely, such as click Screen Saver Button.
 VOID CALLBACK ScreenSaverTimer ( HWND hwnd, UINT message, UINT iTimerID, DWORD dwTime)
 {   // Keep the value to 0. Since RestTimer may start periodically.
     global_int_rest_time = 0;
