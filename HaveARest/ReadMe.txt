@@ -1,13 +1,12 @@
 ================================================================================
-                            HaveARest Project Overview
+                            Have A Rest Project Overview
 ================================================================================
 
-The application wizard has created this HaveARest application for
-you.  This application not only demonstrates the basics of using the Microsoft
-Foundation Classes but is also a starting point for writing your application.
+This Have A Rest Application is designed for the people who always sits beside the computer. 
+When it is started, it will blacken the screen by every intermittent you specified.
 
 This file contains a summary of what you will find in each of the files that
-make up your HaveARest application.
+make up the HaveARest application.
 
 HaveARest.vcxproj
     This is the main project file for VC++ projects generated using an application wizard.
@@ -103,7 +102,3 @@ redistributing Visual C++ applications in MSDN documentation.
 
 /////////////////////////////////////////////////////////////////////////////
 
-
-
-This Have A Rest Application is used for the people who always sit beside the computer. When it is started, it will 
-blacken the screen by every intermittent you specified.
