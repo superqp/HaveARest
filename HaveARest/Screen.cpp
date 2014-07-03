@@ -174,7 +174,7 @@ void CScreen::startScreenSaverWindow()
     ::SetFocus(m_hWnd);
 }
 
-void CScreen::cease()
+void CScreen::stop()
 {
     end();
 

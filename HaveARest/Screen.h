@@ -30,11 +30,11 @@ private:
 
 public:
     CScreen(): m_hInstance(NULL), m_lastWindowhWnd(NULL), m_screenStarted(FALSE) { }
-    ~CScreen(){ end(); cease(); }
+    ~CScreen(){ end(); stop(); }
     void init();
     void start(const unsigned int duration_time);
     void end();
-    void cease();
+    void stop();
     bool getScreenStartedStatus() const { return m_screenStarted; }
     void showStaticMessage();
     void showLocalTime();
