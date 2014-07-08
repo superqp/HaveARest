@@ -16,7 +16,7 @@
 #define START_AND_MINIMIZE_MAIN_WINDOW_PROP "HAVEAREST.START_AND_MINIMIZE_MAIN_WINDOW"
 #define START_AND_MINIMIZE_MAIN_WINDOW_DEF 0
 
-// define the total property number. It needs to be adapted every time a property added or removed.
+// define the total property number. It needs to be adapted every time a property is added or removed.
 #define PROPERTY_AMOUNT 5
 
 // define how many visiting bits will be set. It equals to property number.

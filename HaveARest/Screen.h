@@ -30,7 +30,7 @@ private:
 
 public:
     CScreen(): m_hInstance(NULL), m_lastWindowhWnd(NULL), m_screenStarted(FALSE) { }
-    ~CScreen(){ end(); stop(); }
+    ~CScreen(){ stop(); }
     void init();
     void start(const unsigned int duration_time);
     void end();
