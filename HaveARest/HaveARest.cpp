@@ -177,6 +177,13 @@ void CHaveARestApp::interruptTimer()
         KillTimer(global_pointer_cwnd->m_hWnd, REST_TIMER);
         KillTimer(global_pointer_cwnd->m_hWnd, SCREEN_SAVER_TIMER);
     }
+
+	// If the screen saver window showed time is more than the half of the rest time, then it needs to restart the whole procedure.
+	if (screen.getLastSeconds() > (props.prop[REST_TIME_NUMBER].prop_value * 30))
+	{
+		haveARest.restartTimer();
+	}
+
     screen.end();
 }
 

@@ -128,10 +128,17 @@ void CScreen::start(const unsigned int duration_time)
     ChangeRGBValue(RGB_R, RGB_G, RGB_B, OPERATE_FLAG);
     m_dc.SetTextColor(RGB_MUTABLE);
     startScreenSaverWindow();
+	++m_last_seconds;
 
-    if ( 0 == duration_time )
-        return;
-
+	if (0 == duration_time)
+	{ 
+		// Show last seconds in the screen window.
+		CString temp; 
+		temp.Format(L"%d", m_last_seconds); 
+		showDynamicMessage(temp); 
+		return;
+	}
+	
     CString str_format_time(L"");
     FormatTime(duration_time, str_format_time);
     m_size_text = m_dc.GetTextExtent(str_format_time);
@@ -196,6 +203,7 @@ void CScreen::end()
     ::SetFocus(m_lastWindowhWnd);
     ::ShowWindow(m_hWnd, SW_HIDE);   //::AnimateWindow(m_hWnd, ONE_SECOND, AW_BLEND|AW_HIDE);
     m_screenStarted = false;
+	m_last_seconds = 0;
 }
 
 void CScreen::showStaticMessage()

@@ -22,6 +22,9 @@ private:
     TIME_ZONE_INFORMATION m_time_zone;
     bool m_screenStarted;
 
+	// The last seconds in the screen window. It will be cleared when screen window is closed.
+	int m_last_seconds;
+
     // The folllowing variables are mutable.
     CSize m_size_text;
     POINT m_point_text;
@@ -29,13 +32,14 @@ private:
     HWND m_lastWindowhWnd;
 
 public:
-    CScreen(): m_hInstance(NULL), m_lastWindowhWnd(NULL), m_screenStarted(FALSE) { }
+	CScreen() : m_hInstance(NULL), m_lastWindowhWnd(NULL), m_screenStarted(FALSE), m_last_seconds(0) {}
     ~CScreen(){ stop(); }
     void init();
     void start(const unsigned int duration_time);
     void end();
     void stop();
     bool getScreenStartedStatus() const { return m_screenStarted; }
+	int getLastSeconds() const { return m_last_seconds; }
     void showStaticMessage();
     void showLocalTime();
     void startScreenSaverWindow();
