@@ -5,6 +5,8 @@
 This Have A Rest Application is designed for the people who always sits beside the computer. 
 When it is started, it will blacken the screen by every intermittent you specified.
 
+It is written with Visual C++ by using Microsoft Visual Studio.
+
 This file contains a summary of what you will find in each of the files that
 make up the HaveARest application.
 
